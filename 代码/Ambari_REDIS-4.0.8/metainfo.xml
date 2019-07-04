@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <!--  redis集群版  -->
+            <name>REDIS</name>
+            <displayName>REDIS</displayName>
+            <comment>Redis是基于内存、可持久化的日志型、K-V数据库</comment>
+            <version>4.0.8</version>
+
+            <components>
+                <component>
+                    <name>REDIS_SERVER</name>
+                    <displayName>REDIS_SERVER</displayName>
+                    <category>MASTER</category>
+                    <cardinality>1+</cardinality>
+                    <commandScript>
+                        <script>scripts/server.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>600</timeout>
+                    </commandScript>
+                </component>
+            </components>
+
+            <osSpecifics>
+                <osSpecific>
+                    <osFamily>redhat5,redhat6,redhat7</osFamily>
+                    <packages>
+                        <package>
+                            <name>redis</name>
+                        </package>
+                    </packages>
+                </osSpecific>
+            </osSpecifics>
+
+            <!-- 修改配置后是否重启 -->
+            <restartRequiredAfterChange>true</restartRequiredAfterChange>
+
+        </service>
+    </services>
+</metainfo>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration supports_adding_forbidden="true">
+
+   <property>
+    <name>redis_download_url</name>
+    <value>http://192.168.92.131/ambari</value>
+    <display-name>Redis Download Url</display-name>
+    <description>redis包及其依赖的下载位置</description>
+   </property>
+
+    <property>
+        <name>redis_user</name>
+        <value>root</value>
+        <property-type>USER</property-type>
+        <display-name>Redis User</display-name>
+        <description>redis用户名</description>
+    </property>
+
+    <property>
+        <name>redis_group</name>
+        <value>root</value>
+        <property-type>GROUP</property-type>
+        <display-name>Redis Group</display-name>
+        <description>redis用户组</description>
+    </property>
+
+
+    <property>
+        <name>redis_node_detail</name>
+        <value>192.168.92.161:3,192.168.92.162:3,192.168.92.163:3</value>
+        <description>redis结点安装情况，模板：192.168.92.1:1,192.168.93.2:2,192.168.92.3:3 , 192.168.92.161:3表示在192.168.92.161上安装3个redis实例</description>
+    </property>
+
+    <property>
+        <name>redis_replication_num</name>
+        <value>2</value>
+        <description>redis副本数</description>
+    </property>
+
+
+</configuration>
