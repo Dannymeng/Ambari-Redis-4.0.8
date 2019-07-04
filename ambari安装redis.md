@@ -61,7 +61,7 @@ Ambari Web UI 设置Redis副本数为2，即1主2从模式
 1. 进入redis安装目录：`cd /opt/redis/redis/src`
 2. 查看redis集群状态：`/opt/redis/redis/redis-cluster.sh check ambari01:7000`
     发现集群中master和slave数量比即设置的1:2
- <div align="center"> <img src="pictrue/1%E3%80%81redis%E9%9B%86%E7%BE%A4%E6%A6%82%E8%A7%88%202.png" width="500px"> </div><br>
+ <div align="center"> <img src="pictrue/1%E3%80%81redis%E9%9B%86%E7%BE%A4%E6%A6%82%E8%A7%88.png" width="500px"> </div><br>
 
 3. Java客户端连接Redis集群：
 ```java
