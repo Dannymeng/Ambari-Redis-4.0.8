@@ -1,4 +1,4 @@
-# 功能测试
+# Ambari安装redis文档
 
 ## Redis安装情况
 实际安装情况（以安装者机器虚拟机为例，三台虚拟机，计划每台结点安装3个Redis实例，共9个Redis实例，分配3个master，6个slave。其中每1个master有2个slave）
