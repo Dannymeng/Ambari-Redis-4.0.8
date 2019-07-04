@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+PATH=/usr/local/bin:/sbin:/usr/bin:bin
+HOST_IP=192.168.64.128
+REDISPORT=6379
+EXEC=/usr/local/bin/redis-server
+REDIS_CLI=/usr/local/bin/redis-cli
+PIDFILE=/var/run/redis_6379.pid
+CONF=/etc/redis/redis.conf
+
+case "$1" in
+    start)
+        if [ -e $PIDFILE ]
+        then
+                echo "$PIDFILE has exist, process is running"
+        else
+                echo "$PIDFILE Start ..."
+                $EXEC ${CONF}
+		sleep 1
+                if [  -e $PIDFILE ]
+                then
+                    echo "$PIDFILE is running"
+                else
+                    echo "$PIDFILE is failed to start"
+                fi
+        fi
+        ;;
+
+    stop)
+        if [ ! -e $PIDFILE ]
+        then
+                echo "$PIDFILE does not exist, process is not running"
+        else
+                echo "$PIDFILE Stoping ..."
+                $REDIS_CLI -h $HOST_IP -p ${REDISPORT} shutdown
+                sleep 2
+                while [ -e $PIDFILE ]
+                do
+                    echo "Waiting for Redis to shutdown ..."
+                    sleep 1
+                done
+                echo "$PIDFILE stopped"
+        fi
+        ;;
+
+   restart)
+        ${0} stop
+        ${0} start
+        ;;
+  *)
+    echo "Usage: redis {start|stop|restart}" >&2
+        exit 1
+esac
